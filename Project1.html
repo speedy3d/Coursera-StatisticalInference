@@ -107,7 +107,24 @@ mean(mean_data$mean)</code></pre>
 </div>
 <div id="question-2" class="section level2">
 <h2>Question 2</h2>
-<p>Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.</p>
+<p>Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution. The sample standard deviation (.7628219) is also very clost to the theoretical standard deviation (.7905694)</p>
+<pre class="r"><code>#Theoretical standard deviation - CLT
+(1/lambda)/sqrt(n_samples)</code></pre>
+<pre><code>## [1] 0.7905694</code></pre>
+<pre class="r"><code>#Sample standard deviation
+sd(mean_data$mean)</code></pre>
+<pre><code>## [1] 0.7628219</code></pre>
+<p>We also notice that sample variance (.5818972) and theoretical variance (.625) are also very close.</p>
+<pre class="r"><code>#Theoretical variance
+((1/lambda)/sqrt(n_samples))^2</code></pre>
+<pre><code>## [1] 0.625</code></pre>
+<pre class="r"><code>#Sample variance
+var(mean_data$mean)</code></pre>
+<pre><code>## [1] 0.5818972</code></pre>
+</div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<p>Show that the distribution is approximately normal. We will plot a histogram of the sample population and a overlay the simulated normal distribution to visualize how close they appear.</p>
 </div>
 </div>
 
