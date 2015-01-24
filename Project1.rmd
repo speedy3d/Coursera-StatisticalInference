@@ -1,8 +1,8 @@
 ---
 title: "Statistical Inference Project Part 1"
-author: "Ryan Wissman" (speedy3d)
+author: "Ryan Wissman"
 date: "Saturday, January 24, 2015"
-output: pdf_document
+output: html_document
 ---
 
 #Coursera Statistical Inference Course Project
@@ -24,9 +24,9 @@ Illustrate via simulation and associated explanatory text the properties of the 
 3. Show that the distribution is approximately normal.
 
 
-##Part 1: Simulation
+#Setup and Simulation
 
-First we will need to run a simulation of 
+First we will need set the parameters and run a simlulation of 1000 means for 40 samples.
 
 ```{r}
 #set the number of simulations
@@ -41,4 +41,49 @@ set.seed(1313)
 #set the value of lambda
 lambda <- 0.2
 
+#create dataframe containing simulated means
+mean_data <- data.frame(mean = apply(matrix(rexp(n_samples*n_sim, lambda), n_sim), 1, mean))
+head(mean_data)
+
 ```
+
+##Question 1
+
+Show the sample mean and compare it to the theoretical mean of the distribution. We see that sample mean (5.003448) is extremely close to the theoretical mean (1/0.2=5). 
+
+```{r}
+#Theoretical mean
+1/lambda
+
+#Sample mean
+mean(mean_data$mean)
+```
+
+
+##Question 2
+
+Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution. The sample standard deviation (.7628219) is also very clost to the theoretical standard deviation (.7905694)
+
+```{r}
+#Theoretical standard deviation - CLT
+(1/lambda)/sqrt(n_samples)
+
+#Sample standard deviation
+sd(mean_data$mean)
+
+```
+
+We also notice that sample variance (.5818972) and theoretical variance (.625) are also very close. 
+
+```{r}
+#Theoretical variance
+((1/lambda)/sqrt(40))^2
+
+#Sample variance
+var(mean_data$mean)
+
+```
+
+##Question 3
+
+Show that the distribution is approximately normal.
