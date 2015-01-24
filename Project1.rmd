@@ -87,3 +87,7 @@ var(mean_data$mean)
 ##Question 3
 
 Show that the distribution is approximately normal. We will plot a histogram of the sample population and a overlay the simulated normal distribution to visualize how close they appear.
+
+```{r}
+hist(mean_data$mean, freq=FALSE, col="gray", mean="Sample Distribution w/Simulated Normal Distribution Overlay", xlab="Mean")
+```
