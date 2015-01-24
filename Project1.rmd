@@ -89,5 +89,13 @@ var(mean_data$mean)
 Show that the distribution is approximately normal. We will plot a histogram of the sample population and a overlay the simulated normal distribution to visualize how close they appear.
 
 ```{r}
-hist(mean_data$mean, freq=FALSE, col="gray", mean="Sample Distribution w/Simulated Normal Distribution Overlay", xlab="Mean")
+#plot the sample distribution
+hist(mean_data$mean, freq=FALSE, col="gray", main="Sample Distribution w/Simulated Normal Distribution Overlay", xlab="Mean")
+
+#add the theoretical normal distribution curve on top
+curve(dnorm(x, 1/lambda, (1/lambda/sqrt(n_samples))), col="red", lty=1, lwd=5, add=TRUE)
 ```
+
+As we can see, the sample distribution follows the normal distribution quite nicely.
+
+##Question 4
