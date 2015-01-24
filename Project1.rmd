@@ -2,7 +2,7 @@
 title: "Statistical Inference Project Part 1"
 author: "Ryan Wissman"
 date: "Saturday, January 24, 2015"
-output: html_document
+output: pdf_document
 ---
 
 #Coursera Statistical Inference Course Project
@@ -73,7 +73,7 @@ sd(mean_data$mean)
 
 ```
 
-We also notice that sample variance (.5818972) and theoretical variance (.625) are also very close. 
+We also notice that sample variance (.5818972) and theoretical variance (.625) are close, but the simulation has a lower variance than the theoretical variance of the normal distribution. 
 
 ```{r}
 #Theoretical variance
@@ -90,12 +90,10 @@ Show that the distribution is approximately normal. We will plot a histogram of 
 
 ```{r}
 #plot the sample distribution
-hist(mean_data$mean, freq=FALSE, col="gray", main="Sample Distribution w/Simulated Normal Distribution Overlay", xlab="Mean")
+hist(mean_data$mean, breaks=16, freq=FALSE, col="gray", main="Sample Dist w/Theoretical Normal Dist Overlay", xlab="Mean")
 
-#add the theoretical normal distribution curve on top
+#add the theoretical normal distribution curve on top in red
 curve(dnorm(x, 1/lambda, (1/lambda/sqrt(n_samples))), col="red", lty=1, lwd=5, add=TRUE)
 ```
 
-As we can see, the sample distribution follows the normal distribution quite nicely.
-
-##Question 4
+As we can see, the sample distribution follows the normal distribution fairly well. However, it is not an exact fit. Some of the simulation falls outside of the normal distribution (red overlay). Perhaps with more simulations we would get even closer. 
