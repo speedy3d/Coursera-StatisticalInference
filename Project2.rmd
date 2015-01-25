@@ -52,3 +52,8 @@ with(ToothGrowth, tapply(len, list(supp,dose), mean))
 
 Look at the data this way furthers our hypothesis that orange juice is the superior delivery method to promote tooth growth. 
 
+##Analysis, Hypothesis Test, and Conclusion (Q3 & Q4)
+
+We will now test our hypothesis that orange juice is the superior vitamin C delivery method and results in better tooth growth than ascorbic acid in guinea pigs.
+
+
