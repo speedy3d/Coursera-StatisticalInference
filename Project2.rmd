@@ -14,7 +14,7 @@ This is part two of the project for the class on statistical inference. For this
 3) Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
 4) State your conclusions and the assumptions needed for your conclusions. 
 
-##Loading data and initial analysis
+##Loading data and initial analysis (Q1)
 
 Load the data.
 
@@ -31,4 +31,24 @@ The data shows the effect of vitamin c on tooth growth in guinea pigs. We know t
 ```{r}
 boxplot(len ~ supp * dose, data=ToothGrowth, col=(c("orange", "red")), ylab="Length of Tooth", xlab="Delivery Method and Dosage", main="Tooth Growth Data")
 ```
+
+After examining the above chart we could hypothesize that guinea pigs experienced more tooth growth when given orange juice when compared to ascorbic acid. Furthermore, tooth growth was further increased when exposed to higher dose levels. 
+
+##Data Summary (Q2)
+
+We will now perform a very basic summary of the data.
+
+```{r}
+#set dose to factor to get count
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+summary(ToothGrowth)
+```
+
+We will also look at the mean for each dosage level and delivery method
+
+```{r}
+with(ToothGrowth, tapply(len, list(supp,dose), mean))
+```
+
+Look at the data this way furthers our hypothesis that orange juice is the superior delivery method to promote tooth growth. 
 
