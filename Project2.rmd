@@ -55,11 +55,11 @@ Look at the data this way furthers our hypothesis that orange juice is the super
 
 ##Analysis, Hypothesis Test, and Conclusion (Q3 & Q4)
 
-We will now test our hypothesis that orange juice is the superior vitamin C delivery method and results in better tooth growth among guinea pigs than ascorbic acid. This is our Null hypothesis.
+We will now test our hypothesis that orange juice is the superior vitamin C delivery method and results in better tooth growth among guinea pigs than ascorbic acid. This is our Null hypothesis. The alternative hypothesis will be that neither delivery method promotes toothgrowth in a superior way. 
 
 We will perform a t-test on these data as the size of the data is quite small (60 total observations). We will perform a t-test comparing delivery method at each dosage level. 
 
-Will will reject the Null hypothesis if 
+Will will reject the Null hypothesis if the t-test shows that the true difference for each supplement is larger or less than zero.
 
 ```{r}
 qt(.975,9)
@@ -68,9 +68,12 @@ qt(.975,9)
 Now we will run the t-tests.
 
 ```{r}
+#t-test for 0.5mg
 OJ_min <- ToothGrowth[ToothGrowth$supp=="OJ" & ToothGrowth$dose=="0.5", 1]
 VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="0.5", 1]
 t.test(OJ_min, VC_min)
 ```
 
 After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 0.5mg. 
+
+
