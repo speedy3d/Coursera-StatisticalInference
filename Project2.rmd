@@ -53,16 +53,17 @@ with(ToothGrowth, tapply(len, list(supp,dose), mean))
 
 Look at the data this way furthers our hypothesis that orange juice is the superior delivery method to promote tooth growth. 
 
-##Analysis, Hypothesis Test, and Conclusion (Q3 & Q4)
+##Analysis and Hypothesis Test (Q3)
 
 We will now test our hypothesis that orange juice is the superior vitamin C delivery method and results in better tooth growth among guinea pigs than ascorbic acid. This is our Null hypothesis. The alternative hypothesis will be that neither delivery method promotes toothgrowth in a superior way. 
 
-We will perform a t-test on these data as the size of the data is quite small (60 total observations). We will perform a t-test comparing delivery method at each dosage level. 
+We will perform a t-test on these data as the size of the data is quite small (60 total observations, 10 guinea pigs per supplement). We will perform a t-test comparing delivery method at each dosage level. 
 
 We will reject accept the null hypothesis if the t-test shows that the true difference for each supplement is larger or less than zero.
 
 ```{r}
-#For what t-test value should we accept the null hypothesis? Value must be greater than:
+#10 guinea pigs per supplement (10-1=9, 95% confidence interval)
+#For what t-test value should we accept the null hypothesis? t value must be greater than:
 qt(.975,9)
 ```
 
@@ -94,3 +95,6 @@ t.test(OJ_min, VC_min)
 ```
 
 After this test we reject the null hypothesis as the difference could be zero at 2mg dosage level. We could infer this with the initial chart. 
+
+##Conclusion (Q4)
+
