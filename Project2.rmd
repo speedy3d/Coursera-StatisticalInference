@@ -59,9 +59,10 @@ We will now test our hypothesis that orange juice is the superior vitamin C deli
 
 We will perform a t-test on these data as the size of the data is quite small (60 total observations). We will perform a t-test comparing delivery method at each dosage level. 
 
-Will will reject the Null hypothesis if the t-test shows that the true difference for each supplement is larger or less than zero.
+We will reject accept the null hypothesis if the t-test shows that the true difference for each supplement is larger or less than zero.
 
 ```{r}
+#For what t-test value should we accept the null hypothesis? Value must be greater than:
 qt(.975,9)
 ```
 
@@ -74,6 +75,22 @@ VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="0.5", 1]
 t.test(OJ_min, VC_min)
 ```
 
-After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 0.5mg. 
+After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 0.5mg. We could infer this with the initial chart. 
 
+```{r}
+#t-test for 1mg
+OJ_min <- ToothGrowth[ToothGrowth$supp=="OJ" & ToothGrowth$dose=="1", 1]
+VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="1", 1]
+t.test(OJ_min, VC_min)
+```
 
+After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 1mg. We could infer this with the initial chart. 
+
+```{r}
+#t-test for 2mg
+OJ_min <- ToothGrowth[ToothGrowth$supp=="OJ" & ToothGrowth$dose=="2", 1]
+VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="2", 1]
+t.test(OJ_min, VC_min)
+```
+
+After this test we reject the null hypothesis as the difference could be zero at 2mg dosage level. We could infer this with the initial chart. 
