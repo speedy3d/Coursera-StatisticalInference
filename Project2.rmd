@@ -1,0 +1,8 @@
+---
+title: "Statistical Inference Project Part 2"
+author: "Ryan Wissman"
+date: "Sunday, January 25, 2015"
+output: pdf_document
+---
+
+
