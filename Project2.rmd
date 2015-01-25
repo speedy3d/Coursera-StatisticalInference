@@ -23,14 +23,15 @@ library(datasets)
 data(ToothGrowth)
 
 #Get the first few rows of the data
-head(ToothGrowth)
+head(ToothGrowth,2)
 ```
 
 The data shows the effect of vitamin c on tooth growth in guinea pigs. We know that the length of the tooth is given by (len), as well as the delivery method (OJ) or (VC), and the three dose levels (0.5mg, 1mg, and 2mg). A great way to quickly visualize this data would be to create a box and whisker plot illustrating the tooth growth by dosage level and delivery method.
 
 ```{r}
-boxplot(len ~ supp * dose, data=ToothGrowth, col=(c("orange", "red")), ylab="Length of Tooth", 
-        xlab="Delivery Method and Dosage", main="Tooth Growth Data")
+boxplot(len ~ supp * dose, data=ToothGrowth, col=(c("orange", "red")), 
+        ylab="Length of Tooth", xlab="Delivery Method and Dosage", 
+        main="Tooth Growth Data")
 ```
 
 After examining the above chart we could hypothesize that guinea pigs experienced more tooth growth when given orange juice when compared to ascorbic acid. Furthermore, tooth growth was further increased when exposed to higher dose levels. 
@@ -51,23 +52,13 @@ We will also look at the mean for each dosage level and delivery method
 with(ToothGrowth, tapply(len, list(supp,dose), mean))
 ```
 
-Look at the data this way furthers our hypothesis that orange juice is the superior delivery method to promote tooth growth. 
+Look at the data this way furthers our hypothesis that orange juice is the superior delivery method to promote tooth growth at 0.5mg and 1mg. There appears to be little difference at 2mg. 
 
 ##Analysis and Hypothesis Test (Q3)
 
-We will now test our hypothesis that orange juice is the superior vitamin C delivery method and results in better tooth growth among guinea pigs than ascorbic acid. This is our Null hypothesis. The alternative hypothesis will be that neither delivery method promotes toothgrowth in a superior way. 
-
-We will perform a t-test on these data as the size of the data is quite small (60 total observations, 10 guinea pigs per supplement). We will perform a t-test comparing delivery method at each dosage level. 
+We will now test our hypothesis that orange juice is the superior vitamin C delivery method and results in better tooth growth among guinea pigs than ascorbic acid. This is our Null hypothesis. The alternative hypothesis will be that neither delivery method promotes toothgrowth in a superior way. We will perform a t-test on these data as the size of the data is quite small (60 total observations, 10 guinea pigs per supplement). 
 
 We will reject accept the null hypothesis if the t-test shows that the true difference for each supplement is larger or less than zero.
-
-```{r}
-#10 guinea pigs per supplement (10-1=9, 95% confidence interval)
-#For what t-test value should we accept the null hypothesis? t value must be greater than:
-qt(.975,9)
-```
-
-Now we will run the t-tests.
 
 ```{r}
 #t-test for 0.5mg
@@ -76,7 +67,7 @@ VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="0.5", 1]
 t.test(OJ_min, VC_min)
 ```
 
-After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 0.5mg. We could infer this with the initial chart. 
+After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 0.5mg. p-value is < .01. We could infer this with the initial chart. 
 
 ```{r}
 #t-test for 1mg
@@ -85,7 +76,7 @@ VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="1", 1]
 t.test(OJ_min, VC_min)
 ```
 
-After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 1mg. We could infer this with the initial chart. 
+After this test we accept the null hypothesis as the difference is not equal to zero, it appears that OJ promotes larger tooth growth at 1mg. p-value is < .01. We could infer this with the initial chart. 
 
 ```{r}
 #t-test for 2mg
@@ -94,7 +85,8 @@ VC_min <- ToothGrowth[ToothGrowth$supp=="VC" & ToothGrowth$dose=="2", 1]
 t.test(OJ_min, VC_min)
 ```
 
-After this test we reject the null hypothesis as the difference could be zero at 2mg dosage level. We could infer this with the initial chart. 
+After this test we reject the null hypothesis as the difference could be zero at 2mg dosage level. p-value is > .05. We could infer this with the initial chart. 
 
 ##Conclusion (Q4)
 
+For dosage levels less than 2mg (0.5mg and 1mg) we accepted the null hypothesis and determined that there is a true statistical difference between vitamin c delivery methods in promoting tooth growth among guinea pigs. At the dosage level of 2mg there was no statistical difference between orange juice and ascorbic acid as a delivery method for vitamin c with regards to promoting tooth growth. Thus, at 2mg we can reject the null hypothesis. 
