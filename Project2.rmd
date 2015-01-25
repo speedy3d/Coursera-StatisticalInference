@@ -21,6 +21,15 @@ Load the data.
 ```{r}
 library(datasets)
 data(ToothGrowth)
+
+#Get the first few rows of the data
 head(ToothGrowth)
+```
+
+The data shows the effect of vitamin c on tooth growth in guinea pigs. We know that the length of the tooth is given by (len), as well as the delivery method (OJ) or (VC), and the three dose levels (.5, 2, and 2mg). A great way to quickly visualize this data would be to create a box and whisker plot illustrating the tooth growth by dosage level and delivery method.
+
+```{r}
+
+
 ```
 
